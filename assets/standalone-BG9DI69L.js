@@ -1,0 +1,1 @@
+import{c as s,j as e,a as t}from"./global-CMhyKqyP.js";import a from"./Page-B3srGvG8.js";s.createRoot(document.getElementById("root")).render(e.jsx(t.StrictMode,{children:e.jsx("div",{className:"standalone-shell",children:e.jsx("div",{className:"standalone-screen",children:e.jsx(a,{})})})}));

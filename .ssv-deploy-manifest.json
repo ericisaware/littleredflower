@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-06-01T07:33:22Z",
+  "generated_by": "code-verify.sh",
+  "project_type": "static",
+  "entry_file": "index.html",
+  "runtime": {
+    "package_manager": "none"
+  },
+  "dependencies": {
+    "source_file": "",
+    "has_deps": false,
+    "db_hint": "none"
+  },
+  "verify_status": "passed"
+}
