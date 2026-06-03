@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>腾讯公益 · 接龙一条龙</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="phone">
+    <div class="statusbar">
+      <span>9:41</span>
+      <span>腾讯公益 · 接龙</span>
+      <span class="dots">📶 🔋</span>
+    </div>
+
+    <!-- ============ 龙身首页 ============ -->
+    <section id="view-home" class="view active">
+      <div class="banner">
+        <div class="ops">
+          <button class="op" data-act="share" title="分享">📤</button>
+          <button class="op" data-act="rule" title="规则">📜</button>
+        </div>
+        <div class="title" id="home-title"></div>
+        <div class="topword" id="home-topword"></div>
+      </div>
+
+      <!-- 龙长度 / 等级 -->
+      <div class="card paper-edge dragon-meter" id="meter-card"></div>
+
+      <!-- 行为选择 -->
+      <div class="card paper-edge">
+        <div class="sec-title"><i class="bar"></i>做个好事，让龙变长</div>
+        <div class="behavior-grid" id="behavior-grid"></div>
+        <div class="people-row">
+          <span class="txt" id="people-txt"></span>
+          <div class="avatars" id="avatars"></div>
+        </div>
+      </div>
+
+      <!-- 热画墙 -->
+      <div class="card paper-edge">
+        <div class="sec-title"><i class="bar"></i>热门好事墙 🔥</div>
+        <div class="hot-scroll" id="hot-scroll"></div>
+      </div>
+
+      <!-- 龙身 -->
+      <div class="dragon-head">
+        <div class="scale">🐉</div>
+        龙首 · {{head}}
+      </div>
+      <div id="dragon-body"></div>
+
+      <div style="text-align:center;margin:18px 0;">
+        <button class="btn block" data-act="join-quick">🐲 我也接一棒</button>
+      </div>
+    </section>
+
+    <!-- ============ 榜单 ============ -->
+    <section id="view-rank" class="view">
+      <div class="banner"><div class="title" style="font-size:20px;">极热接龙榜</div></div>
+      <div class="card paper-edge">
+        <div class="champ-banner" id="champ-banner"></div>
+      </div>
+      <div class="rank-tabs" id="rank-tabs"></div>
+      <div class="card paper-edge" id="rank-body"></div>
+    </section>
+
+    <!-- ============ 发起 ============ -->
+    <section id="view-create" class="view">
+      <div class="banner"><div class="title" style="font-size:20px;">发起一条龙</div></div>
+      <div class="card paper-edge">
+        <div class="sec-title"><i class="bar"></i>选择公益项目</div>
+        <div class="proj-card">
+          <div class="cover">🍱</div>
+          <div>
+            <div style="font-weight:800;">乡村儿童午餐</div>
+            <div class="muted">助学 · 腾讯公益 × 小红花</div>
+          </div>
+        </div>
+      </div>
+      <div class="card paper-edge">
+        <div class="sec-title"><i class="bar"></i>配置可参与的好事</div>
+        <div class="muted" style="margin-bottom:8px;">选择越少行为，单次贡献加成越高（聚焦做深）</div>
+        <div class="behavior-grid" id="create-grid"></div>
+        <div class="bonus-tip" id="bonus-tip"></div>
+      </div>
+      <div class="card paper-edge">
+        <div class="sec-title"><i class="bar"></i>选择龙的主题色</div>
+        <div class="color-pick" id="color-pick"></div>
+      </div>
+      <div style="text-align:center;margin:18px 0;">
+        <button class="btn block" data-act="do-create">🐉 创建接龙并分享</button>
+      </div>
+    </section>
+
+    <!-- ============ 个人中心 ============ -->
+    <section id="view-me" class="view">
+      <div class="banner" style="text-align:left;">
+        <div class="profile-head">
+          <div class="pa" id="me-avatar"></div>
+          <div>
+            <div class="pn" id="me-name"></div>
+            <div class="pm">做好事，会上瘾 ✨</div>
+          </div>
+        </div>
+      </div>
+      <div class="card paper-edge">
+        <div class="stat-row" id="me-stats"></div>
+      </div>
+      <div class="card paper-edge">
+        <div class="sec-title"><i class="bar"></i>我的称号 & 锦旗</div>
+        <div class="badge-wrap" id="me-badges"></div>
+      </div>
+      <div class="card paper-edge">
+        <div class="subtab" id="me-subtab">
+          <button class="on" data-mtab="created">我发起的</button>
+          <button data-mtab="joined">我参与的</button>
+        </div>
+        <div id="me-list"></div>
+      </div>
+      <div style="text-align:center;margin:18px 0;">
+        <button class="btn block blue" data-act="open-box">🎁 我的爱心盲盒（<span id="me-box-n"></span>）</button>
+      </div>
+    </section>
+
+    <!-- ============ 底部 Tab ============ -->
+    <nav class="tabbar">
+      <button class="tab on" data-tab="home"><span class="ic">🐉</span>龙身</button>
+      <button class="tab" data-tab="rank"><span class="ic">🏆</span>榜单</button>
+      <button class="tab" data-tab="create"><span class="ic">➕</span>发起</button>
+      <button class="tab" data-tab="me"><span class="ic">👤</span>我的</button>
+    </nav>
+  </div>
+
+  <!-- 视觉参考浮标 -->
+  <button id="ref-fab" title="对照原始设计稿">🎨<span>设计稿</span></button>
+
+  <!-- 通用弹层 -->
+  <div class="mask" id="mask">
+    <div class="sheet" id="sheet"></div>
+  </div>
+
+  <!-- 视觉参考全屏画廊 -->
+  <div id="ref-gallery">
+    <div class="ref-bar">
+      <span class="ref-title">原始设计稿 · 视觉参考</span>
+      <button class="ref-close" id="ref-close">×</button>
+    </div>
+    <div class="ref-tabs" id="ref-tabs"></div>
+    <div class="ref-scroll" id="ref-scroll"></div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>腾讯公益 · 接龙一条龙 玩法 Demo</title>
+  <style>
+    :root { --c-theme:#4cb4eb; --c-theme-d:#2f93ce; --c-red:#d81800; --c-red-l:#ff5a3c; --c-gold:#f5b316; --c-ink:#2a2118; --c-sub:#7c7062; }
+    * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; color:var(--c-ink);
+      background:radial-gradient(120% 80% at 50% 0%,#8ed3f4 0%,#4cb4eb 42%,#2f93ce 100%) fixed; min-height:100vh; padding:0 0 60px; }
+    .wrap { max-width:680px; margin:0 auto; padding:0 18px; }
+    header { text-align:center; color:#fff; padding:54px 0 30px; }
+    header .dragon { font-size:64px; filter:drop-shadow(0 6px 12px rgba(0,0,0,.25)); }
+    header h1 { font-size:30px; font-weight:900; margin:10px 0 6px; text-shadow:0 2px 0 var(--c-theme-d),0 6px 14px rgba(0,0,0,.2); }
+    header .sub { font-size:14px; opacity:.95; line-height:1.7; }
+    .pill { display:inline-block; background:rgba(255,255,255,.92); color:var(--c-red); font-weight:700;
+      font-size:12px; padding:4px 14px; border-radius:999px; margin-top:12px; box-shadow:0 4px 12px rgba(0,0,0,.12); }
+    .card { background:#fef9ef; border:2px solid #fff; border-radius:20px; padding:22px; margin:16px 0;
+      box-shadow:0 8px 24px rgba(45,33,20,.18); }
+    .card h2 { font-size:19px; display:flex; align-items:center; gap:8px; }
+    .card h2 .bar { width:4px; height:18px; border-radius:2px; background:var(--c-red); }
+    .card p.d { color:var(--c-sub); font-size:13px; line-height:1.7; margin:8px 0 14px; }
+    .feat { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 14px; }
+    .feat span { font-size:11px; background:#eaf6fd; color:var(--c-theme-d); padding:3px 9px; border-radius:999px; font-weight:600; }
+    .btn { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:14px;
+      border-radius:14px; font-size:16px; font-weight:800; text-decoration:none; color:#fff;
+      background:linear-gradient(135deg,var(--c-red-l),var(--c-red)); box-shadow:0 6px 16px rgba(216,24,0,.32);
+      transition:transform .12s; }
+    .btn:active { transform:scale(.97); }
+    .btn.blue { background:linear-gradient(135deg,#6cc5f2,var(--c-theme-d)); box-shadow:0 6px 16px rgba(47,147,206,.32); }
+    .btn.ghost { background:#fff; color:var(--c-red); box-shadow:0 4px 12px rgba(0,0,0,.1); }
+    .tag { font-size:11px; font-weight:700; padding:2px 8px; border-radius:6px; margin-left:auto; }
+    .tag.v { background:#e7f7e9; color:#2e7d32; }
+    .tag.n { background:#fff3e0; color:#e07b00; }
+    .list { font-size:13px; line-height:1.9; color:var(--c-ink); padding-left:2px; }
+    .list b { color:var(--c-red); }
+    footer { text-align:center; color:rgba(255,255,255,.85); font-size:12px; margin-top:24px; line-height:1.8; }
+    .grid2 { display:grid; grid-template-columns:1fr; gap:10px; }
+    @media(min-width:520px){ .grid2{ grid-template-columns:1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="dragon">🐉</div>
+      <h1>接龙 · 一条龙</h1>
+      <div class="sub">腾讯公益「做好事平台」社交化玩法<br/>做好事让龙变长 · AI 评分 · 越长越上首页</div>
+      <div class="pill">高保真可点击 Demo · 基于真实设计稿与数值表</div>
+    </header>
+
+    <div class="card">
+      <h2><span class="bar"></span>体验 Demo<span class="tag n">原生版</span></h2>
+      <p class="d">纯 HTML/CSS/JS，无依赖，加载最快。建议用手机或浏览器移动端模拟器（宽 390）打开。</p>
+      <div class="feat">
+        <span>10 类做好事</span><span>AI 评分动画</span><span>17 级龙</span><span>爱心盲盒</span><span>多榜单</span><span>发起接龙</span><span>个人中心</span><span>视觉参考画廊</span>
+      </div>
+      <a class="btn" href="demo/index.html">🚀 打开原生版 Demo</a>
+    </div>
+
+    <div class="card">
+      <h2><span class="bar"></span>体验 Demo<span class="tag v">Vue2 组件版</span></h2>
+      <p class="d">对齐历史 <code>solitaire_v2</code> 的组件架构（App + DragonList / HotWall / RankBoard / BehaviorDialog / BlindBox 等），便于前端团队接入历史代码。功能与原生版一致。</p>
+      <div class="feat">
+        <span>Vue 2.7 本地化</span><span>组件拆分</span><span>同一数据层</span><span>同一视觉</span>
+      </div>
+      <a class="btn blue" href="demo-vue/index.html">🧩 打开 Vue2 版 Demo</a>
+    </div>
+
+    <div class="card">
+      <h2><span class="bar"></span>核心玩法一览</h2>
+      <div class="list">
+        · <b>做好事让龙变长</b>：捐款 / 月捐 / 书法 / 微笑 / AI画 / 捐步 / 静心 / 答题 / 早起 / 随身好事，共 10 类<br/>
+        · <b>AI 评分驱动展示</b>：分数越高 → 龙身贡献越多 + 展示越酷炫（普通 / 优秀 / 王者金光）<br/>
+        · <b>17 级龙成长</b>：宝宝 → … → 逍遥宝鳞（32,768,000 米），绑定 4 档抽奖池<br/>
+        · <b>爱心盲盒</b>：每次好事得 1 抽，开公益金 / 小红花周边 / 称号徽章<br/>
+        · <b>榜单即首页流量</b>：极热榜 4 子榜 Top5 → 次周 24h 首页推荐，Top2 再 +24h
+      </div>
+    </div>
+
+    <footer>
+      数值口径来自 接龙数据1114v2.xlsx · 文案来自 接龙游戏文案V3.1.xlsx<br/>
+      视觉对齐 接龙2.0 视觉方案 / 交互终稿 · 仅用于产品方案演示
+    </footer>
+  </div>
+</body>
+</html>
