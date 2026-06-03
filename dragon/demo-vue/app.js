@@ -127,9 +127,19 @@ new Vue({
         </div>
       </div>
 
+      <dragon-list :nodes="nodes" @like="likeNode"></dragon-list>
+
       <hot-wall @preview="previewHot"></hot-wall>
 
-      <dragon-list :nodes="nodes" @like="likeNode"></dragon-list>
+      <div class="card paper-edge dragon-rule-card compact-card">
+        <div class="sec-title"><i class="bar"></i>上龙展示规则</div>
+        <div class="tier-board">
+          <div class="tier-row head"><span>卡片分为 5 档</span><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b></div>
+          <div class="tier-row"><span>捐微笑 / 画 / 字</span><em>1</em><em>2</em><em>3</em><em>－</em><em>－</em></div>
+          <div class="tier-row"><span>捐钱</span><em>－</em><em>－</em><em>1</em><em>2</em><em>3</em></div>
+        </div>
+        <div class="muted">高分内容会上更高档位，王者档会带金光特效。</div>
+      </div>
 
       <div style="text-align:center;margin:18px 0;">
         <button class="btn block" @click="showJoinMenu=true">🐲 我也接一棒</button>

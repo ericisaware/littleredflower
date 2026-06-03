@@ -2,7 +2,7 @@
 Vue.component('hot-wall', {
   props: { list: { type: Array, default: () => window.DRAGON_DATA.HOTPICS } },
   template: `
-    <div class="card paper-edge">
+    <div class="card paper-edge compact-card">
       <div class="sec-title"><i class="bar"></i>热门好事墙 🔥</div>
       <div class="hot-scroll">
         <div class="hot-pic" v-for="h in list" :key="h.name" @click="$emit('preview', h)">

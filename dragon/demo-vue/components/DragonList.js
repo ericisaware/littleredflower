@@ -3,11 +3,19 @@ Vue.component('dragon-list', {
   props: { nodes: { type: Array, required: true } },
   template: `
     <div>
-      <div class="dragon-head"><div class="scale">🐉</div>龙首 · {{ project }}</div>
-      <div v-for="(n, i) in nodes" :key="n.rank + '-' + i">
+      <div class="dragon-head">
+        <div class="scale">🐉</div>
+        <div class="head-copy">
+          <div class="eyebrow">公益项目接龙主页面</div>
+          <div class="name">龙首 · {{ project }}</div>
+          <div class="sub">沿着龙身持续做好事，优质内容会被挂到龙脊上持续展示</div>
+        </div>
+      </div>
+      <div v-for="(n, i) in nodes" :key="n.rank + '-' + i" class="dragon-seg" :class="i % 2 === 0 ? 'seg-main' : 'seg-offset'">
         <div class="link-ring" v-if="i !== 0"></div>
+        <div class="seg-hook"><i></i><i></i></div>
         <!-- 捐款节点 -->
-        <div v-if="n.type === 'donate'" class="node" :class="n.tier" >
+        <div v-if="n.type === 'donate'" class="node donate-node" :class="n.tier">
           <div class="ribbon donate">第 {{ n.rank }} 位</div>
           <div class="king-fx" v-if="n.tier === 'king'">👑</div>
           <div class="node-row" style="margin-top:14px;">
@@ -18,7 +26,8 @@ Vue.component('dragon-list', {
             </div>
             <div class="like" @click="$emit('like', i)"><div class="heart">❤️</div><div class="n">{{ n.likes }}</div></div>
           </div>
-          <div style="text-align:right;color:var(--c-red);font-weight:800;margin-top:4px;">+{{ n.meter }} 米</div>
+          <div class="node-meter-line">+{{ n.meter }} 米</div>
+          <div class="donate-banner" v-if="n.tier !== 'normal'"><span>倾囊相助</span></div>
         </div>
         <!-- UGC 节点 -->
         <div v-else class="node" :class="n.tier">

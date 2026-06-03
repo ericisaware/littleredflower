@@ -113,34 +113,44 @@
   function renderBody() {
     $('#dragon-body').innerHTML = S.nodes.map((n, i) => {
       const ring = i === 0 ? '' : '<div class="link-ring"></div>';
+      const segClass = i % 2 === 0 ? 'seg-main' : 'seg-offset';
+      const hook = '<div class="seg-hook"><i></i><i></i></div>';
       if (n.type === 'donate') {
-        return `${ring}<div class="node ${n.tier}" data-node="${i}">
-          <div class="ribbon donate">第 ${n.rank} 位</div>
-          ${n.tier === 'king' ? '<div class="king-fx">👑</div>' : ''}
-          <div class="node-row" style="margin-top:14px;">
-            <div class="av">🙂</div>
-            <div class="mid">
-              <div class="nm">${n.name}<span class="tm">${n.time}</span></div>
-              <div class="ttl">捐赠 <b>${n.money}</b> 元支持《${n.project}》</div>
+        const flag = n.tier !== 'normal' ? '<div class="donate-banner"><span>倾囊相助</span></div>' : '';
+        return `${ring}<div class="dragon-seg ${segClass}" data-node="${i}">
+          ${hook}
+          <div class="node donate-node ${n.tier}">
+            <div class="ribbon donate">第 ${n.rank} 位</div>
+            ${n.tier === 'king' ? '<div class="king-fx">👑</div>' : ''}
+            <div class="node-row" style="margin-top:14px;">
+              <div class="av">🙂</div>
+              <div class="mid">
+                <div class="nm">${n.name}<span class="tm">${n.time}</span></div>
+                <div class="ttl">捐赠 <b>${n.money}</b> 元支持《${n.project}》</div>
+              </div>
+              <div class="like" data-like="${i}"><div class="heart">❤️</div><div class="n">${n.likes}</div></div>
             </div>
-            <div class="like" data-like="${i}"><div class="heart">❤️</div><div class="n">${n.likes}</div></div>
+            <div class="node-meter-line">+${n.meter} 米</div>
+            ${flag}
           </div>
-          <div style="text-align:right;color:var(--c-red);font-weight:800;margin-top:4px;">+${n.meter} 米</div>
         </div>`;
       }
       const b = D.behaviorByKey(n.behavior) || {};
       const hue = { draw: 200, calligraphy: 28, smile: 45, story: 330 }[n.behavior] || 200;
-      return `${ring}<div class="node ${n.tier}" data-node="${i}">
-        <div class="ribbon">第 ${n.rank} 位</div>
-        ${n.tier === 'king' ? '<div class="king-fx">👑</div>' : ''}
-        <div class="node-pic" style="background:linear-gradient(135deg,hsl(${hue},70%,70%),hsl(${hue},60%,52%))">${b.icon || '🎨'}</div>
-        <div class="node-row">
-          <div class="av">${n.name[0]}</div>
-          <div class="mid">
-            <div class="nm">${n.name}<span class="tm">${n.time}</span></div>
-            <div class="ttl">送 <b>${n.tag}</b> ${n.tagDesc}　<span class="meter">+${n.meter}米</span>${n.score ? ` · ${n.score}分` : ''}</div>
+      return `${ring}<div class="dragon-seg ${segClass}" data-node="${i}">
+        ${hook}
+        <div class="node ${n.tier}">
+          <div class="ribbon">第 ${n.rank} 位</div>
+          ${n.tier === 'king' ? '<div class="king-fx">👑</div>' : ''}
+          <div class="node-pic" style="background:linear-gradient(135deg,hsl(${hue},70%,70%),hsl(${hue},60%,52%))">${b.icon || '🎨'}</div>
+          <div class="node-row">
+            <div class="av">${n.name[0]}</div>
+            <div class="mid">
+              <div class="nm">${n.name}<span class="tm">${n.time}</span></div>
+              <div class="ttl">送 <b>${n.tag}</b> ${n.tagDesc}　<span class="meter">+${n.meter}米</span>${n.score ? ` · ${n.score}分` : ''}</div>
+            </div>
+            <div class="like" data-like="${i}"><div class="heart">❤️</div><div class="n">${n.likes}</div></div>
           </div>
-          <div class="like" data-like="${i}"><div class="heart">❤️</div><div class="n">${n.likes}</div></div>
         </div>
       </div>`;
     }).join('');

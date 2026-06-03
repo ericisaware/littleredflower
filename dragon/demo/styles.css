@@ -84,27 +84,42 @@ img { display: block; max-width: 100%; }
 
 /* ---------- 顶部 Banner ---------- */
 .banner {
-  position: relative; z-index: 2; padding: 6px 4px 0;
-  text-align: center; color: #fff;
+  position: relative; z-index: 2; margin: 4px -14px 0; padding: 22px 118px 18px 18px;
+  text-align: left; color: #fff; overflow: hidden;
+  background: linear-gradient(180deg, rgba(39, 118, 191, .42), rgba(39, 118, 191, .08));
+  border-radius: 0 0 26px 26px;
+}
+.banner::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(180px 90px at 18% 0%, rgba(255,255,255,.38), transparent 68%),
+              radial-gradient(120px 60px at 78% 22%, rgba(255,220,160,.2), transparent 70%);
+  pointer-events: none;
+}
+.banner::after {
+  content: "🐲"; position: absolute; right: 14px; top: 12px;
+  font-size: 92px; line-height: 1; transform: rotate(8deg);
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,.22)); opacity: .95;
 }
 .banner .title {
-  font-size: 22px; font-weight: 900; line-height: 1.3;
-  text-shadow: 0 2px 0 var(--c-theme-d), 0 4px 8px rgba(0, 0, 0, .2);
+  position: relative; z-index: 1;
+  font-size: 25px; font-weight: 900; line-height: 1.28; max-width: 210px;
+  text-shadow: 0 2px 0 var(--c-theme-d), 0 6px 12px rgba(0, 0, 0, .18);
 }
 .banner .topword {
-  display: inline-block; margin-top: 8px; padding: 5px 14px;
-  background: rgba(255, 255, 255, .92); color: var(--c-red);
-  border-radius: 999px; font-size: 13px; font-weight: 700; box-shadow: var(--sh);
+  position: relative; z-index: 1;
+  display: inline-block; margin-top: 10px; padding: 6px 14px;
+  background: rgba(255, 255, 255, .94); color: var(--c-red);
+  border-radius: 999px; font-size: 12px; font-weight: 800; box-shadow: var(--sh);
 }
-.banner .ops { position: absolute; top: 6px; right: 6px; display: flex; gap: 8px; }
+.banner .ops { position: absolute; top: 10px; right: 10px; display: flex; gap: 8px; z-index: 2; }
 .banner .op {
-  width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, .9);
-  display: flex; align-items: center; justify-content: center; font-size: 16px;
+  width: 34px; height: 34px; border-radius: 50%; background: rgba(255, 255, 255, .92);
+  display: flex; align-items: center; justify-content: center; font-size: 15px;
   box-shadow: var(--sh);
 }
 
 /* ---------- 龙长度 / 等级条 ---------- */
-.dragon-meter { text-align: center; }
+.dragon-meter { text-align: center; position: relative; z-index: 3; margin-top: -8px; }
 .dragon-meter .lv-badge {
   display: inline-flex; align-items: center; gap: 6px;
   background: linear-gradient(135deg, var(--c-gold), #ffd970);
