@@ -3,84 +3,88 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-<title>接龙·一条龙 — 6.25视觉还原</title>
+<title>接龙·一条龙</title>
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 <div id="app" class="page">
-  <!-- 顶部 Banner -->
+
+  <!-- 顶部全宽红条 -->
+  <div class="top-bar-red"></div>
+
+  <!-- 深色 Banner -->
   <div class="banner">
+    <div class="banner-dragon-img">🐲</div>
     <div class="banner-title">接龙·一条龙</div>
     <div class="banner-sub">公益挑战 传递爱心</div>
     <div class="banner-ops">
       <div class="op" data-act="share">🔗</div>
       <div class="op" data-act="rule">规则</div>
     </div>
-    <div class="banner-dragon">🐲</div>
   </div>
 
-  <!-- 操作入口 -->
-  <div class="card entry-card">
-    <div class="entry-title">
-      <svg class="entry-title-bg" viewBox="0 0 300 40"><path d="M20 40 L0 20 L20 0 L280 0 L300 20 L280 40 Z" fill="currentColor"/></svg>
-      <span class="entry-title-txt">接龙·爱心项目</span>
-    </div>
-    <div class="entry-grid">
-      <div class="entry-item c-draw" data-act="draw">
-        <div class="entry-icon">🎨</div>
-        <div class="entry-btn">画画接龙</div>
-        <div class="entry-desc">用画笔表达爱意</div>
+  <!-- 4 色行为入口 -->
+  <div class="action-area">
+    <div class="action-grid">
+      <div class="act-card act-draw" data-act="draw">
+        <span class="act-icon">🎨</span>
+        <div class="act-label">捐副画</div>
+        <div class="act-desc">AI 为你作画评分开龙</div>
       </div>
-      <div class="entry-item c-donate" data-act="donate">
-        <div class="entry-icon">💝</div>
-        <div class="entry-btn">捐款接龙</div>
-        <div class="entry-desc">用捐赠表达爱意</div>
+      <div class="act-card act-calligraphy" data-act="calligraphy">
+        <span class="act-icon">🖌️</span>
+        <div class="act-label">捐个字</div>
+        <div class="act-desc">写一个字 AI 书法评分开龙</div>
+      </div>
+      <div class="act-card act-smile" data-act="smile">
+        <span class="act-icon">😄</span>
+        <div class="act-label">捐微笑</div>
+        <div class="act-desc">对镜头微笑 优图打分开龙</div>
+      </div>
+      <div class="act-card act-donate" data-act="donate">
+        <span class="act-icon">💝</span>
+        <div class="act-label">捐款</div>
+        <div class="act-desc">捐款支持 1元=0.05米</div>
       </div>
     </div>
-    <div class="entry-info">
-      <span class="info-text">已有 <b id="join-count">12,847</b> 人次参与接龙互动</span>
-      <div class="avatar-row" id="avatar-row"></div>
+
+    <!-- 参与人次 -->
+    <div class="people-bar">
+      <span>已有 <b id="join-count">12,480</b> 人次参与接龙互动</span>
+      <div class="av-row" id="av-row"></div>
     </div>
   </div>
 
-  <!-- 热门画作墙 -->
-  <div class="card hot-card">
-    <div class="sec-title"><i class="bar"></i>热门好事墙 🔥</div>
-    <div class="hot-scroll" id="hot-scroll"></div>
-  </div>
+  <!-- 热门好事墙 -->
+  <div class="section-label">热门好事墙 🔥</div>
+  <div class="hot-scroll" id="hot-scroll"></div>
 
-  <!-- 龙身 -->
-  <div class="dragon-head">
-    <div class="scale">🐉</div>
-    <div class="head-copy">
-      <div class="eyebrow">公益项目接龙主页面</div>
-      <div class="name">龙首 · 爱心接龙</div>
-      <div class="sub">沿着龙身持续做好事，优质内容会被挂到龙脊上持续展示</div>
-    </div>
-  </div>
+  <!-- 龙身主轴 -->
+  <div class="section-label" style="padding-top:6px;">接龙展示</div>
   <div id="dragon-body"></div>
 
   <!-- 上龙展示规则 -->
-  <div class="card rule-card">
-    <div class="sec-title"><i class="bar"></i>上龙展示规则</div>
+  <div class="rule-card">
+    <div class="r-title">上龙展示规则</div>
     <div class="tier-board">
       <div class="tier-row head"><span>卡片分为 5 档</span><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b></div>
       <div class="tier-row"><span>捐微笑 / 画 / 字</span><em>1</em><em>2</em><em>3</em><em>－</em><em>－</em></div>
       <div class="tier-row"><span>捐钱</span><em>－</em><em>－</em><em>1</em><em>2</em><em>3</em></div>
     </div>
-    <div class="muted">高分内容会上更高档位，王者档会带金光特效。</div>
+    <div class="tier-hint">高分内容会上更高档位，王者档会带金光特效。</div>
   </div>
 
-  <div style="text-align:center;margin:18px 0;">
+  <!-- CTA -->
+  <div class="cta-area">
     <button class="btn block" data-act="join-quick">🐲 我也接一棒</button>
   </div>
 
   <!-- 规则弹窗 -->
   <div class="rule-overlay" id="rule-overlay">
     <div class="rule-box">
-      <div class="rule-head">🐲</div>
-      <div class="rule-title">接龙规则</div>
-      <div class="rule-body">
+      <div class="icon">🐲</div>
+      <div class="title">接龙规则</div>
+      <div class="body">
         <p>1. 每位用户可在接龙中选择画画、写字、微笑或捐款参与</p>
         <p>2. 参与接龙后，内容将挂载在龙身上展示</p>
         <p>3. 高分内容会进入更高档位，获得更多曝光</p>
@@ -90,6 +94,7 @@
       <div class="rule-close" data-act="close-rule">✕</div>
     </div>
   </div>
+
 </div>
 <script src="data.js"></script>
 <script src="app.js"></script>
